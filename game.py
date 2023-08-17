@@ -14,7 +14,6 @@ pygame.mixer.init()
 
 
 
-
 elements = [
     {"name": "earth", "image": pygame.image.load('elements/earth.png'), "pos": [50, 50], "dragging": False, "origin": True},
     {"name": "water", "image": pygame.image.load('elements/water.png'), "pos": [200, 50], "dragging": False, "origin": True},
@@ -40,6 +39,7 @@ combinations = {
     ('water', 'lake'): 'sea',
     ('water', 'sea'): 'ocean',
     ('lava', 'sea'): 'primordialsoup',
+    ('lava', 'earth'): 'volcano',
     ('volcano', 'primordialsoup'): 'life',
     ('earth', 'life'): 'soil',
     ('soil', 'life'): 'plant',
@@ -202,7 +202,7 @@ def generate_valid_position(elements):
 held_element = None
 delete_mode = False
 font = pygame.font.Font(None, 36)
-total_elements = 144
+total_elements = 145
 found_elements = 4
 play_next_song(playlist)
 
@@ -299,3 +299,4 @@ while True:
         menu_pos = (10 + i * 70, 10)
         screen.blit(element["image"], menu_pos)
     pygame.display.flip()
+
